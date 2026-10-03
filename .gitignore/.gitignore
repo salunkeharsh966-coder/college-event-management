@@ -1,0 +1,32 @@
+# =========================
+# Java / Spring Boot
+# =========================
+backend/target/
+*.class
+*.log
+
+# =========================
+# Node / Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db

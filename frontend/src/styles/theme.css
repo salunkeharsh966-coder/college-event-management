@@ -1,0 +1,550 @@
+/* =====================================================================
+   CampusEvents - theme
+   ---------------------------------------------------------------------
+   A small set of CSS variables and component classes layered on top of
+   Bootstrap 5. Bootstrap provides the grid, buttons, forms and tables;
+   this file gives the project its own college identity:
+     - navy + gold colour scheme
+     - rounded "card" look with a soft shadow
+     - a hero band on the home page
+   ===================================================================== */
+
+:root {
+  --ce-navy:       #12315b;
+  --ce-navy-dark:  #0d2444;
+  --ce-navy-soft:  #1b4a86;
+  --ce-gold:       #f0a500;
+  --ce-gold-soft:  #ffd166;
+  --ce-teal:       #0e9594;
+  --ce-page:       #f5f7fb;
+  --ce-ink:        #1c2333;
+  --ce-muted:      #6b7280;
+  --ce-border:     #e3e8f0;
+  --ce-shadow:     0 4px 18px rgba(18, 49, 91, 0.08);
+  --ce-shadow-lg:  0 10px 34px rgba(18, 49, 91, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ce-page);
+  color: var(--ce-ink);
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------------------------------------------------------
+   Accessibility: a keyboard user must be able to see where focus is.
+   --------------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--ce-gold);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Navbar
+   --------------------------------------------------------------------- */
+.ce-navbar {
+  background: linear-gradient(90deg, var(--ce-navy-dark), var(--ce-navy));
+  box-shadow: var(--ce-shadow);
+}
+
+.ce-navbar .navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ce-navbar .navbar-brand .ce-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--ce-gold);
+  color: var(--ce-navy-dark);
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+}
+
+.ce-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem !important;
+  transition: background 0.18s, color 0.18s;
+}
+
+.ce-navbar .nav-link:hover { background: rgba(255,255,255,0.10); color: #fff !important; }
+.ce-navbar .nav-link.active { background: rgba(255,255,255,0.16); color: #fff !important; }
+
+.ce-user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.ce-role-badge {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--ce-gold);
+  color: var(--ce-navy-dark);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------
+   Page shell
+   --------------------------------------------------------------------- */
+.ce-page { padding: 1.8rem 0 3.4rem; }
+
+.ce-page-head { margin-bottom: 1.6rem; }
+
+.ce-page-head h1,
+.ce-page-head h2 {
+  font-weight: 700;
+  color: var(--ce-navy-dark);
+  margin-bottom: 0.35rem;
+}
+
+.ce-page-head p { color: var(--ce-muted); margin-bottom: 0; }
+
+/* ---------------------------------------------------------------------
+   Hero band (home page)
+   --------------------------------------------------------------------- */
+.ce-hero {
+  background:
+    radial-gradient(1100px 420px at 88% -12%, rgba(240,165,0,0.30), transparent 62%),
+    linear-gradient(120deg, var(--ce-navy-dark) 0%, var(--ce-navy) 52%, var(--ce-navy-soft) 100%);
+  color: #fff;
+  border-radius: 20px;
+  padding: 3rem 2.4rem;
+  box-shadow: var(--ce-shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.ce-hero h1 {
+  font-weight: 800;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.18;
+  margin-bottom: 0.9rem;
+}
+
+.ce-hero p.lead { color: rgba(255,255,255,0.90); max-width: 46rem; }
+
+.ce-hero .ce-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ---------------------------------------------------------------------
+   Cards
+   --------------------------------------------------------------------- */
+.ce-card {
+  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-radius: 14px;
+  box-shadow: var(--ce-shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ce-card:hover { transform: translateY(-4px); box-shadow: var(--ce-shadow-lg); }
+
+.ce-card-body { padding: 1.15rem 1.25rem; flex: 1 1 auto; }
+
+.ce-card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ce-navy-dark);
+  margin-bottom: 0.45rem;
+}
+
+.ce-card-text {
+  color: var(--ce-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+}
+
+.ce-card-footer {
+  border-top: 1px solid var(--ce-border);
+  padding: 0.8rem 1.25rem;
+  background: #fafbfe;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Section wrapper used all over the app */
+.ce-section {
+  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-radius: 14px;
+  box-shadow: var(--ce-shadow);
+  padding: 1.5rem 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.ce-section-title {
+  font-weight: 700;
+  color: var(--ce-navy-dark);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ce-section-title i { color: var(--ce-gold); }
+
+/* ---------------------------------------------------------------------
+   Meta rows (date / venue / department inside an event card)
+   --------------------------------------------------------------------- */
+.ce-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--ce-muted);
+  margin-bottom: 0.35rem;
+}
+
+.ce-meta i { color: var(--ce-navy-soft); width: 1rem; text-align: center; }
+
+/* ---------------------------------------------------------------------
+   Stat cards (admin dashboard)
+   --------------------------------------------------------------------- */
+.ce-stat {
+  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-radius: 14px;
+  box-shadow: var(--ce-shadow);
+  padding: 1.15rem 1.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ce-stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  background: rgba(18, 49, 91, 0.09);
+  color: var(--ce-navy);
+}
+
+.ce-stat-icon.gold { background: rgba(240,165,0,0.16); color: #a86f00; }
+.ce-stat-icon.teal { background: rgba(14,149,148,0.14); color: var(--ce-teal); }
+
+.ce-stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ce-navy-dark);
+}
+
+.ce-stat-label {
+  font-size: 0.83rem;
+  color: var(--ce-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.3rem;
+}
+
+.ce-stat-hint { font-size: 0.76rem; color: var(--ce-muted); margin-top: 0.25rem; }
+
+/* ---------------------------------------------------------------------
+   Badges
+   --------------------------------------------------------------------- */
+.ce-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.24rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+.ce-badge.open       { background: #e4f7ec; color: #157347; }
+.ce-badge.upcoming   { background: #fff4d9; color: #a86f00; }
+.ce-badge.closed     { background: #eef1f6; color: #5b6474; }
+.ce-badge.cancelled  { background: #fde8e8; color: #b02a2a; }
+.ce-badge.completed  { background: #e7edfa; color: var(--ce-navy); }
+.ce-badge.full       { background: #fde8e8; color: #b02a2a; }
+.ce-badge.confirmed  { background: #e4f7ec; color: #157347; }
+.ce-badge.attended   { background: #e7edfa; color: var(--ce-navy); }
+.ce-badge.dept       { background: rgba(18,49,91,0.08); color: var(--ce-navy); }
+
+/* ---------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------- */
+.btn-ce-primary {
+  background: var(--ce-navy);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9px;
+  padding: 0.5rem 1.15rem;
+  transition: background 0.18s;
+}
+
+.btn-ce-primary:hover { background: var(--ce-navy-dark); color: #fff; }
+
+.btn-ce-gold {
+  background: var(--ce-gold);
+  border: none;
+  color: var(--ce-navy-dark);
+  font-weight: 700;
+  border-radius: 9px;
+  padding: 0.5rem 1.2rem;
+}
+
+.btn-ce-gold:hover { background: var(--ce-gold-soft); color: var(--ce-navy-dark); }
+
+.btn-ce-outline {
+  background: transparent;
+  border: 1.5px solid var(--ce-navy);
+  color: var(--ce-navy);
+  font-weight: 600;
+  border-radius: 9px;
+  padding: 0.45rem 1.1rem;
+}
+
+.btn-ce-outline:hover { background: var(--ce-navy); color: #fff; }
+
+/* ---------------------------------------------------------------------
+   Forms
+   --------------------------------------------------------------------- */
+.ce-form-label {
+  font-weight: 600;
+  font-size: 0.87rem;
+  color: var(--ce-ink);
+  margin-bottom: 0.35rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ce-navy-soft);
+  box-shadow: 0 0 0 0.2rem rgba(18, 49, 91, 0.13);
+}
+
+/* ---------------------------------------------------------------------
+   Auth pages (login / register)
+   --------------------------------------------------------------------- */
+.ce-auth-wrap {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  place-items: center;
+  padding: 2.5rem 1rem;
+}
+
+.ce-auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-radius: 18px;
+  box-shadow: var(--ce-shadow-lg);
+  padding: 2.2rem 2rem;
+}
+
+.ce-auth-card.wide { max-width: 620px; }
+
+.ce-auth-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--ce-navy), var(--ce-navy-soft));
+  color: var(--ce-gold);
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  margin: 0 auto 1rem;
+}
+
+.ce-demo-box {
+  background: #f7f9fd;
+  border: 1px dashed #c8d3e5;
+  border-radius: 11px;
+  padding: 0.85rem 1rem;
+  font-size: 0.83rem;
+  color: var(--ce-muted);
+  margin-top: 1.1rem;
+}
+
+.ce-demo-box code {
+  background: rgba(18,49,91,0.07);
+  color: var(--ce-navy);
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------------
+   Tables
+   --------------------------------------------------------------------- */
+.ce-table thead th {
+  background: #f2f5fa;
+  color: var(--ce-navy-dark);
+  font-size: 0.79rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 2px solid var(--ce-border);
+  white-space: nowrap;
+}
+
+.ce-table td { vertical-align: middle; font-size: 0.89rem; }
+
+.ce-table tbody tr:hover { background: #fafbff; }
+
+/* ---------------------------------------------------------------------
+   Progress bars
+   --------------------------------------------------------------------- */
+.ce-progress {
+  height: 9px;
+  background: #e9edf5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ce-progress .bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--ce-navy-soft), var(--ce-teal));
+  transition: width 0.4s ease;
+}
+
+/* ---------------------------------------------------------------------
+   Ticket-like registration cards (student dashboard)
+   --------------------------------------------------------------------- */
+.ce-ticket {
+  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-left: 5px solid var(--ce-teal);
+  border-radius: 12px;
+  box-shadow: var(--ce-shadow);
+  padding: 1rem 1.15rem;
+  height: 100%;
+}
+
+.ce-ticket.cancelled { border-left-color: #d9534f; opacity: 0.78; }
+
+/* ---------------------------------------------------------------------
+   Empty state
+   --------------------------------------------------------------------- */
+.ce-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ce-muted);
+}
+
+.ce-empty i { font-size: 3rem; color: #c3cddd; display: block; margin-bottom: 0.8rem; }
+
+/* ---------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------- */
+.ce-footer {
+  background: var(--ce-navy-dark);
+  color: rgba(255,255,255,0.72);
+  padding: 1.6rem 0;
+  font-size: 0.87rem;
+  margin-top: 2rem;
+}
+
+.ce-footer a { color: var(--ce-gold-soft); text-decoration: none; }
+
+/* ---------------------------------------------------------------------
+   Toasts
+   --------------------------------------------------------------------- */
+.ce-toast-stack {
+  position: fixed;
+  top: 84px;
+  right: 18px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 360px;
+}
+
+.ce-toast {
+  border: none;
+  border-radius: 11px;
+  box-shadow: var(--ce-shadow-lg);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.89rem;
+  color: #fff;
+  animation: ce-slide-in 0.22s ease;
+}
+
+.ce-toast.success { background: #187a4b; }
+.ce-toast.error   { background: #b02a2a; }
+.ce-toast.info    { background: var(--ce-navy); }
+
+@keyframes ce-slide-in {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------------------------------------------------------------------
+   Misc
+   --------------------------------------------------------------------- */
+.ce-spinner-wrap { text-align: center; padding: 3rem 0; }
+
+.ce-divider { height: 1px; background: var(--ce-border); margin: 1.4rem 0; }
+
+.ce-chip-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+.text-muted-soft { color: var(--ce-muted) !important; }
+
+.ce-nowrap { white-space: nowrap; }
+
+/* Responsive tweaks ---------------------------------------------------- */
+@media (max-width: 767px) {
+  .ce-hero { padding: 2rem 1.35rem; border-radius: 16px; }
+  .ce-section { padding: 1.15rem 1.1rem; }
+  .ce-auth-card { padding: 1.6rem 1.25rem; }
+  .ce-toast-stack { left: 12px; right: 12px; max-width: none; }
+  .ce-stat { padding: 0.95rem 1rem; }
+  .ce-stat-value { font-size: 1.5rem; }
+}
